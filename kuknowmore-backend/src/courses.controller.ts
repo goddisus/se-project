@@ -1,10 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
 
 @Controller('courses')
-export class AppController {
+export class CoursesController {
 
   @Get()
-  getHello(): string {
-    return 'Hello';
+  findAll(): any {
+    return {
+        message: 'Hello World'
+    };
   }
 }
