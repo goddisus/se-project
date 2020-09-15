@@ -1,33 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
 
-type AppState = {
-  message : string;
-};
+//
 
-class App extends React.Component<{}, AppState> {
-  state: AppState = {
-    message: 'Default message',
-  };
+const App = () => {
+  const [courses, setCourses] = useState<any[]>([]);
 
-  componentDidMount() {
+  //check value change or not?
+  useEffect(() => {
     fetch('http://localhost:3000/courses')
-      .then(res => res.json())
-      .then(obj => {
-        this.setState({message: obj.message});
-      });
-  }
+    .then(res => res.json())
+    .then(courses => {
+      console.log(courses);
+      setCourses(courses);
+    });
+  },[]);
+  //
 
-  render() {
-    return (
-      <div>
-        {this.state.message}
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <ul>
+        {courses.map((item) => ( 
+          <li key={item.id}>
+            {item.number} - {item.title}
+          </li> 
+        ))}
+      </ul>
+    </div>
+  );
 }
-
 export default App;
 
 
