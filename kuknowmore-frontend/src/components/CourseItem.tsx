@@ -1,12 +1,12 @@
 import React from 'react';
-import { Courses } from './interfaces';
+import { Course } from '../interfaces';
 
 type CourseItemProps = {
-    course: Courses,
+    course: Course,
 };
 
 const CourseItem = (props: CourseItemProps) => {
-    const course: Courses = props.course;
+    const course: Course = props.course;
 
     return (
         <li>{course.number} - {course.title}</li>

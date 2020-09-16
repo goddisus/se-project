@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react';
-
+import { Course } from './interfaces';
 import './App.css';
-import { Courses } from './interfaces';
-import CourseItem from './CourseItem';
-//
+import NewCourseForm from './components/NewCourseForm';
+import CourseItem from './components/CourseItem';
+import NewCourseFrom from './components/NewCourseForm';
 
 const App = () => {
   //type Courses from interfaces.ts
-  const [courses, setCourses] = useState<Courses[]>([]);
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [formVisible, setFormVisible] = useState<boolean>(false);
+  const [newCourseNumber, setNewCourseNumber] = useState<string>('');
+  const [newCourseTitle, setNewCourseTitle] = useState<string>('');
+  
+  const toggleFormVisible = () => {
+    //if true then show below
+    //if false then invisible
+    setFormVisible(!formVisible);
+  };
 
   //check value change or not?
   useEffect(() => {
@@ -27,6 +36,10 @@ const App = () => {
           <CourseItem key={item.id} course={item} />
         ))}
       </ul>
+      <button onClick={toggleFormVisible}>New course</button>
+      {formVisible &&
+        <NewCourseFrom />
+      }
     </div>
   );
 }
