@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CoursesController } from './courses.controller';
-import { CoursesService } from './courses.service';
-import { TypeOrmModule } from '@nestjs/typeorm'
-import Course from './entities/course.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { CoursesModule } from './courses/courses.module';
+
+import Course from './courses/course.entity';
 
 @Module({
   imports: [
@@ -17,12 +17,12 @@ import Course from './entities/course.entity';
       entities: [Course],
       synchronize: true,
     }),
-
+    
+    CoursesModule,
     //for Feature import to sub module
     //for Repository in courses.service
-    TypeOrmModule.forFeature([Course]),
   ],
-  controllers: [AppController, CoursesController],
-  providers: [AppService, CoursesService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

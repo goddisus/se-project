@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import Course from './entities/course.entity';
-
+import Course from './course.entity';
+//WARNING! pls use class name that same with collection in mongodb
 @Injectable()
 export class CoursesService {
     constructor(
