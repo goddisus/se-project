@@ -9,7 +9,7 @@ const CourseItem = (props: CourseItemProps) => {
     const course: Course = props.course;
 
     return (
-        <li>{course.number} - {course.title}</li>
+        <li className="Course">{course.number} - {course.title}</li>
     );
 };
 
