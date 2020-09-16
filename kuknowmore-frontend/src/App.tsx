@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 import './App.css';
-
+import { Courses } from './interfaces';
+import CourseItem from './CourseItem';
 //
 
 const App = () => {
-  const [courses, setCourses] = useState<any[]>([]);
+  //type Courses from interfaces.ts
+  const [courses, setCourses] = useState<Courses[]>([]);
 
   //check value change or not?
   useEffect(() => {
@@ -22,9 +24,7 @@ const App = () => {
     <div className="App">
       <ul>
         {courses.map((item) => ( 
-          <li key={item.id}>
-            {item.number} - {item.title}
-          </li> 
+          <CourseItem key={item.id} course={item} />
         ))}
       </ul>
     </div>
