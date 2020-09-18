@@ -3,6 +3,7 @@ import { Course } from './interfaces';
 import './App.css';
 import CourseItem from './components/CourseItem';
 import NewCourseFrom from './components/NewCourseForm';
+import CoursesService from './services/CoursesService';
 
 const App = () => {
   //type Courses from interfaces.ts
@@ -16,12 +17,10 @@ const App = () => {
   };
 
   const fetchCourses = () => {
-    fetch('http://localhost:3000/courses')
-    .then(res => res.json())
-    .then(courses => {
-      console.log(courses);
-      setCourses(courses);
-    });
+    CoursesService.fetchCourses()
+      .then(courses => {
+        setCourses(courses);
+      });
   };
 
   const handleNewCourseCreated = (course: Course) => {
