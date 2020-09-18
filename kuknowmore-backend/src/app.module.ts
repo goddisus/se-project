@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CoursesModule } from './courses/courses.module';
 
 import Course from './courses/course.entity';
+import Review from './courses/review.entity';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import Course from './courses/course.entity';
       type: 'mongodb',
       host: 'localhost',
       database: 'test2',
-      entities: [Course],
+      entities: [Course, Review],
       synchronize: true,
     }),
     
